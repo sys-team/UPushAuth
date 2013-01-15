@@ -1,6 +1,6 @@
-drop service UPushAuth
+sa_make_object 'service', 'UPushAuth'
 ;
-create service UPushAuth
+alter service UPushAuth
 TYPE 'RAW' 
 AUTHORIZATION OFF USER "upa"
 url on

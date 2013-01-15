@@ -1,3 +1,6 @@
+grant connect to upa;
+grant dba to upa;
+
 create table upa.device(
 
     pushToken varchar(1024),
