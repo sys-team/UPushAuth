@@ -58,7 +58,7 @@ begin
                authCode,
                id
           into @secret, @authCode, @id
-          from upa.reisterDeviceForClient(@deviceId, @clientId);
+          from upa.registerDeviceForClient(@deviceId, @clientId);
           
         set @response = xmlconcat(xmlelement('code', @authCode), xmlelement('id', @id));
         

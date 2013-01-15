@@ -1,4 +1,4 @@
-create or replace procedure upa.reisterDeviceForClient(@deviceId integer, @clientId long varchar)
+create or replace procedure upa.registerDeviceForClient(@deviceId integer, @clientId long varchar)
 begin
     declare @secret long varchar;
     declare @authCode long varchar;
