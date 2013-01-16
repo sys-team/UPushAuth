@@ -24,9 +24,8 @@ begin
     -- Пока во всех случаях 404 вернём
     exception  
         when others then 
-            call op.errorHandler('upa.UPushAuth',SQLSTATE,errormsg()); 
-            commit;
-
+            call util.errorHandler('upa.UPushAuth',SQLSTATE,errormsg()); 
+            
             call dbo.sa_set_http_header('@HttpStatus', '404');
 
             return '';
