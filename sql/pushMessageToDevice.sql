@@ -1,12 +1,15 @@
 create or replace procedure upa.pushMessageToDevice(@deviceId integer, @message long varchar)
 begin
     declare @pushToken long varchar;
+    declare @applicationId long varchar;
     declare @response long varchar;
     declare @xid uniqueidentifier;
     
-    set @pushToken = (select pushToken
-                        from upa.device
-                       where id = @deviceId);
+    select pushToken,
+           applicationId
+      into @pushToken, @applicationId
+      from upa.device
+     where id = @deviceId;
                        
     if @pushToken is null then
         return;
@@ -21,7 +24,7 @@ begin
            @pushToken as pushToken,
            @message as msg;
     
-    set @response = upa.pushNotification('http://apns.unact.ru/geotracing-dev', @pushToken, @message);
+    set @response = upa.pushNotification('http://apns.unact.ru' + '/' + @applicationId, @pushToken, @message);
     
     update upa.pushMessageLog
        set response = @response

@@ -5,6 +5,7 @@ create table upa.device(
 
     pushToken varchar(1024),
     deviceType varchar(128) not null,
+    applicationId varchar(128),
     registered BOOL,
 
     id ID, xid GUID, ts TS, cts CTS,

@@ -13,6 +13,7 @@ create global temporary table upa.registerLog(
 
     pushToken long varchar,
     deviceType varchar(256),
+    applicationId varchar(128),
     response long varchar,
 
     callerIP varchar(16) default connection_property('ClientNodeAddress'),
