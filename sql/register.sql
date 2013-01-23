@@ -32,7 +32,8 @@ begin
            id
       into @deviceXid, @deviceId
       from upa.device
-     where pushToken = @pushToken;
+     where pushToken = @pushToken
+       and applicationId = @applicationId;
                        
     if @deviceXid is null then
     

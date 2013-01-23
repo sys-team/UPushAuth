@@ -3,10 +3,12 @@ grant dba to upa;
 
 create table upa.device(
 
-    pushToken varchar(1024),
+    pushToken varchar(1024) not null,
     deviceType varchar(128) not null,
-    applicationId varchar(128),
+    applicationId varchar(128) not null,
     registered BOOL,
+    
+    unique(pushToken, applicationId),
 
     id ID, xid GUID, ts TS, cts CTS,
     unique (xid), primary key (id)

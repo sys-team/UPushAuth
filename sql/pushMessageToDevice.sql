@@ -17,7 +17,7 @@ begin
     
     set @xid = newid();
     
-    set @message = '{"aps":{},"unact":{' + @message + '}}}';
+    set @message = '{"aps":{},"unact":{' + @message + '}}}}';
     
     insert into upa.pushMessageLog with auto name
     select @xid as xid,
