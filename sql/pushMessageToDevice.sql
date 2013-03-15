@@ -24,7 +24,11 @@ begin
            @pushToken as pushToken,
            @message as msg;
     
-    set @response = upa.pushNotification('http://apns.unact.ru' + '/' + @applicationId, @pushToken, @message);
+    set @response = upa.pushNotification(
+        util.getUserOption('UPAapnsUrl') + '/' + @applicationId,
+        util.getUserOption('UPAapnsCert'),
+        @pushToken,
+        @message);
     
     update upa.pushMessageLog
        set response = @response
