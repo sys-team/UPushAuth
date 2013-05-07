@@ -3,6 +3,16 @@ returns xml
 begin
 
     declare @response xml;
+    
+    if http_variable('register') = '' then
+        set @url = 'register';
+    elseif http_variable('activate') = '' then
+        set @url = 'activate';
+    elseif http_variable('auth') = '' then
+        set @url = 'auth';
+    elseif http_variable('check-credentials') = '' then
+        set @url = 'check-credentials';
+    end if;
 
     case @url
     
