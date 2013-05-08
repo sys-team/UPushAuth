@@ -11,8 +11,9 @@ begin
     
     set @xid = newid();
     
-    insert into upa.activateLog with auto name
+    insert into upa.log with auto name
     select @xid as xid,
+           'activate' as service,
            @deviceXid as deviceId,
            @activationCode as activationCode;
     
@@ -38,7 +39,7 @@ begin
         set @response = xmlelement('activate','no');
     end if;
     
-    update upa.activateLog
+    update upa.log
        set response = @response
      where xid = @xid;
     

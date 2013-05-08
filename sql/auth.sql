@@ -16,8 +16,9 @@ begin
     
     set @xid = newid();
     
-    insert into upa.authLog with auto name
+    insert into upa.log with auto name
     select @xid as xid,
+           'auth' as service,
            @clientId as clientId,
            @redirectUrl as redirectUrl;
     
@@ -69,7 +70,7 @@ begin
     end if;
     
     
-    update upa.authLog
+    update upa.log
        set response = @response
      where xid = @xid;
     

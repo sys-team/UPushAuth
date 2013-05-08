@@ -17,8 +17,9 @@ begin
     
     set @xid = newid();
 
-    insert into upa.registerLog with auto name
+    insert into upa.log with auto name
     select @xid as xid,
+           'register' as service,
            @pushToken as pushToken,
            @deviceType as deviceType,
            @applicationId as applicationId;
@@ -63,7 +64,7 @@ begin
         
     end if;
     
-    update upa.registerLog
+    update upa.log
        set response = @response
      where xid = @xid;
     

@@ -9,57 +9,20 @@ create global temporary table if not exists upa.pushMessageLog(
 )  not transactional share by all
 ;
 
-create global temporary table upa.registerLog(
+create global temporary table upa.log(
 
+    service varchar(64),
     pushToken long varchar,
     deviceType varchar(256),
-    applicationId varchar(128),
-    response long varchar,
-
-    callerIP varchar(16) default connection_property('ClientNodeAddress'),
-
-    id ID, xid GUID, ts TS, cts CTS,
-    unique (xid), primary key (id)
-    
-)  not transactional share by all
-;
-
-create global temporary table upa.activateLog(
-
     deviceId varchar(256),
+    applicationId varchar(128),
     activationCode varchar(1024),
-    response long varchar,
-
-    callerIP varchar(16) default connection_property('ClientNodeAddress'),
-
-    id ID, xid GUID, ts TS, cts CTS,
-    unique (xid), primary key (id)
-    
-)  not transactional share by all
-;
-
-create global temporary table upa.authLog(
-
-    clientId varchar(256),
-    redirectUrl long varchar,
-    response long varchar,
-
-    callerIP varchar(16) default connection_property('ClientNodeAddress'),
-
-    id ID, xid GUID, ts TS, cts CTS,
-    unique (xid), primary key (id)
-    
-)  not transactional share by all
-;
-
-
-create global temporary table upa.checkCredentialsLog(
-
     clientId varchar(256),
     clientSecret varchar(1024),
     accountCode varchar(1024),
     accountSecret varchar(1024),
     redirectUrl long varchar,
+    
     response long varchar,
 
     callerIP varchar(16) default connection_property('ClientNodeAddress'),
@@ -69,3 +32,4 @@ create global temporary table upa.checkCredentialsLog(
     
 )  not transactional share by all
 ;
+

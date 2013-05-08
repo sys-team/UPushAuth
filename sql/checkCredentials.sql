@@ -20,8 +20,9 @@ begin
     
     set @xid = newid();
     
-    insert into upa.checkCredentialsLog with auto name
+    insert into upa.log with auto name
     select @xid as xid,
+           'checkCredentials' as service,
            @clientId as clientId,
            @clientSecret as clientSecret,
            @accountCode as accountCode,
@@ -63,7 +64,7 @@ begin
         set @response = xmlelement('error','Not authorized');
     end if;
 
-    update upa.checkCredentialsLog
+    update upa.log
        set response = @response
      where xid = @xid;
     
