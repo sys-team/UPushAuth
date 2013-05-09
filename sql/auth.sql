@@ -25,7 +25,7 @@ begin
     if @clientId = '' or @redirectUrl = '' then
         set @response = xmlelement('error','client_id or redirect_uri missing');
         
-        update upa.authLog
+        update upa.log
            set response = @response
          where xid = @xid;
      
@@ -38,7 +38,7 @@ begin
                     
         set @response = xmlelement('error','unknown client_id');
         
-        update upa.authLog
+        update upa.log
            set response = @response
          where xid = @xid;
      
