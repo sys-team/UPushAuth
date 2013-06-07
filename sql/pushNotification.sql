@@ -7,5 +7,5 @@ create or replace function upa.pushNotification(
 returns long varchar
 url '!url'
 type 'http:get'
-certificate 'file=!file'
+certificate 'cert=!file'
 ;

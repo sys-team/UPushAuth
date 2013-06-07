@@ -3,7 +3,7 @@ returns long varchar
 begin
     declare @result long varchar;
     
-    set @result = uuidtostr(newid());
+    set @result = uuidtostr(util.UDGuid());
 
     delete from upa.activationCode
      where device = @deviceId

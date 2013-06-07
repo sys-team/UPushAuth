@@ -25,7 +25,7 @@ create global temporary table upa.log(
     
     response long varchar,
 
-    callerIP varchar(16) default coalesce(nullif(http_header('clientIp'),''), connection_property('ClientNodeAddress')),
+    callerIP varchar(128) default coalesce(nullif(http_header('clientIp'),''), connection_property('ClientNodeAddress')),
 
     id ID, xid GUID, ts TS, cts CTS,
     unique (xid), primary key (id)
